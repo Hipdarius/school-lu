@@ -137,9 +137,9 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: |
           .github/.venv/bin/python .github/scripts/crop-exams.py \
-                --headless \
-                --workers 1 \
-                ${{ github.event_name == 'workflow_dispatch' && format('--matcher "{0}"', inputs.path) || '*' }}
+            --headless \
+            --workers 1 \
+            --matcher "${{ github.event_name == 'workflow_dispatch' && inputs.path || '*' }}"
 
       - name: Configure Git
         run: |
